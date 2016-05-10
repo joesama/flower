@@ -1,0 +1,27 @@
+{
+    "name": "threef/extension",
+    "description": "Front End Extensions Orchestra Platform",
+    "homepage": "",
+    "keywords": ["orchestra-platform", "orchestral", "laravel", "administrator", "admin", "user-management", "front"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmed Johari Jumali",
+            "email": "joharijumali@gmail.com",
+            "homepage": "https://bitbucket.org/joesama"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Threef\\Extension\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.5.9",
+        "orchestra/support": "~3.1"
+    },
+    "minimum-stability": "dev"
+}

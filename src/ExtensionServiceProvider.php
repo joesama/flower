@@ -14,6 +14,21 @@ class ExtensionServiceProvider extends ModuleServiceProvider
 {
 
     /**
+     * The application or extension group namespace.
+     *
+     * @var string|null
+     */
+    protected $routeGroup = 'extension';
+
+    /**
+     * The fallback route prefix.
+     *
+     * @var string
+     */
+    protected $routePrefix = 'extension/';
+
+
+    /**
      * The application or extension namespace.
      *
      * @var string|null
@@ -79,7 +94,7 @@ class ExtensionServiceProvider extends ModuleServiceProvider
     protected function loadRoutes()
     {
         $path = realpath(__DIR__);
-
+dd($path);
         $this->loadFrontendRoutesFrom($path.'/routes.php');
     }
 

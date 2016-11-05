@@ -19,8 +19,15 @@
             "src/helpers.php"
         ]
     },
+    "repositories": [
+        {
+            "type": "gitlab",
+            "url": "http://coders.3fresources.com/threef/entree.git"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
+        "threef/entree": "~1.0",
         "orchestra/support": "~3.1"
     },
     "minimum-stability": "dev"

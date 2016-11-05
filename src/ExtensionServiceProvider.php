@@ -48,6 +48,9 @@ class ExtensionServiceProvider extends ModuleServiceProvider
      * @var array
      */
     protected $listen = [
+        'entree.menu:ready' => [
+            'Threef\Extension\Handlers\Events\MenuHandlers'
+        ]
     ];
 
     /**
@@ -94,7 +97,7 @@ class ExtensionServiceProvider extends ModuleServiceProvider
     protected function loadRoutes()
     {
         $path = realpath(__DIR__);
-dd($path);
+
         $this->loadFrontendRoutesFrom($path.'/routes.php');
     }
 

@@ -1,8 +1,8 @@
 {
-    "name": "threef/extension",
-    "description": "Front End Extensions Orchestra Platform",
+    "name": "joesama/flower",
+    "description": "Orchestra Extension : Simple Flow Manager",
     "homepage": "",
-    "keywords": ["orchestra-platform", "orchestral", "laravel", "administrator", "admin", "user-management", "front"],
+    "keywords": ["orchestra-platform", "orchestral", "laravel", "flow-manager", "simple-flow", "orchestra-extension"],
     "license": "MIT",
     "authors": [
         {
@@ -13,22 +13,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Threef\\Extension\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
-    },
-    "repositories": [
-        {
-            "type": "gitlab",
-            "url": "http://coders.3fresources.com/threef/entree.git"
+            "Joesama\\Flower\\": "src/"
         }
-    ],
+    },
     "require": {
-        "php": ">=5.5.9",
-        "threef/entree": "~1.0",
-        "orchestra/support": "~3.1"
+        "php": ">=5.6.0",
+        "orchestra/foundation": "~3.3.0",
     },
     "minimum-stability": "dev"
 }

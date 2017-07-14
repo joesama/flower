@@ -1,4 +1,4 @@
-<?php namespace Threef\Extension;
+<?php namespace Joesama\Flower;
 
 use Illuminate\Routing\Router;
 use Orchestra\Foundation\Support\Providers\ModuleServiceProvider;
@@ -10,7 +10,7 @@ use Orchestra\Foundation\Support\Providers\ModuleServiceProvider;
  * @package Threef\Entree
  * @author joharijumali@gmail.com
  **/
-class ExtensionServiceProvider extends ModuleServiceProvider
+class FlowerServiceProvider extends ModuleServiceProvider
 {
 
     /**
@@ -18,14 +18,14 @@ class ExtensionServiceProvider extends ModuleServiceProvider
      *
      * @var string|null
      */
-    protected $routeGroup = 'extension';
+    protected $routeGroup = '';
 
     /**
      * The fallback route prefix.
      *
      * @var string
      */
-    protected $routePrefix = 'extension/';
+    protected $routePrefix = 'flower/';
 
 
     /**
@@ -33,7 +33,7 @@ class ExtensionServiceProvider extends ModuleServiceProvider
      *
      * @var string|null
      */
-    protected $namespace = 'Threef\Extension\Http\Routing';
+    protected $namespace = 'Joesama\Flower\Http\Routing';
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -48,9 +48,7 @@ class ExtensionServiceProvider extends ModuleServiceProvider
      * @var array
      */
     protected $listen = [
-        'entree.menu:ready' => [
-            'Threef\Extension\Handlers\Events\MenuHandlers'
-        ]
+
     ];
 
     /**
@@ -80,11 +78,9 @@ class ExtensionServiceProvider extends ModuleServiceProvider
     {
         $path = realpath(__DIR__.'/../resources');
 
-        $this->publishOrchestraLang($path);
-
-        $this->addLanguageComponent('threef/extension', 'extension', $path.'/lang');
-        $this->addConfigComponent('threef/extension', 'extension', $path.'/config');
-        $this->addViewComponent('threef/extension', 'extension', $path.'/views');
+        $this->addLanguageComponent('joesama/flower', 'joesama/flower', $path.'/lang');
+        $this->addConfigComponent('joesama/flower', 'joesama/flower', $path.'/config');
+        $this->addViewComponent('joesama/flower', 'joesama/flower', $path.'/views');
 
     }
 

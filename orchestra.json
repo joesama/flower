@@ -1,10 +1,10 @@
 {
 	"name": "Threef Orchestral Platform Extension ",
-	"description": "Threef Orchestral Platform Extension",
+	"description": "Orchestra Extension : Simple Flow Manager",
 	"author": "Ahmed Johari Jumali",
 	"url": "",
 	"version": "1.0",
 	"provides": [
-		"Threef\\Extension\\BaseExtensionServiceProvider"
+		"Joesama\\Flower\\FlowerServiceProvider"
 	]
 }

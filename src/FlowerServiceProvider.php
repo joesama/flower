@@ -1,8 +1,10 @@
-<?php namespace Joesama\Flower;
+<?php 
+namespace Joesama\Flower;
 
 use Illuminate\Routing\Router;
 use Orchestra\Foundation\Support\Providers\ModuleServiceProvider;
-
+use Orchestra\Extension\Factory;
+use Joesama\Flower\Handlers\Menu\FlowerMenuHandler;
 
 /**
  * Wrapper extension for threef development
@@ -25,7 +27,7 @@ class FlowerServiceProvider extends ModuleServiceProvider
      *
      * @var string
      */
-    protected $routePrefix = 'flower/';
+    protected $routePrefix = '';
 
 
     /**
@@ -67,7 +69,7 @@ class FlowerServiceProvider extends ModuleServiceProvider
      */
     public function register()
     {
-
+ 
     }
 
 
@@ -82,8 +84,37 @@ class FlowerServiceProvider extends ModuleServiceProvider
         $this->addConfigComponent('joesama/flower', 'joesama/flower', $path.'/config');
         $this->addViewComponent('joesama/flower', 'joesama/flower', $path.'/views');
 
+        $this->registerMenu();
+
     }
 
+
+    /**
+     * Register packages menu
+     *
+     **/
+    protected function registerMenu()
+    {
+        $events = $this->app->make('events');
+        $config = $this->app->make('config');
+        $acl = $this->app->make('orchestra.acl')->make('orchestra');
+        $actions = ['Manage Flower'];
+
+        $admin   = $config->get('orchestra/foundation::roles.admin', 1);
+        $roles   = $this->app->make('orchestra.role')->newQuery()->pluck('name', 'id');
+
+        $acl->actions()->attach($actions);
+        $acl->allow($roles[$admin], $actions);
+
+        $handlers = [
+            FlowerMenuHandler::class
+        ];
+
+        foreach ($handlers as $handler) {
+            $events->listen('orchestra.started: admin', $handler);
+        }
+
+    }
 
     /**
      * Boot extension routing.
@@ -94,7 +125,7 @@ class FlowerServiceProvider extends ModuleServiceProvider
     {
         $path = realpath(__DIR__);
 
-        $this->loadFrontendRoutesFrom($path.'/routes.php');
+        $this->loadBackendRoutesFrom($path.'/routes.php');
     }
 
 

@@ -69,7 +69,7 @@ class FlowerServiceProvider extends ModuleServiceProvider
      */
     public function register()
     {
- 
+        $this->app->bind('flower', \Joesama\Flower\Data\Repositories\FlowerApi::class);
     }
 
 

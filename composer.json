@@ -11,6 +11,12 @@
             "homepage": "https://bitbucket.org/joesama"
         }
     ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "http://coders.3fresources.com/threef/entree.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Joesama\\Flower\\": "src/"
@@ -18,7 +24,8 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "orchestra/foundation": "~3.3.0"
+        "orchestra/foundation": "~3.3.0",
+        "threef/entree": "~1.0.0"
     },
     "minimum-stability": "dev"
 }

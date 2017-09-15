@@ -2,6 +2,7 @@
 namespace Joesama\Flower\Data\Repositories;
 
 use Joesama\Flower\Data\Model\Flow;
+use Joesama\Flower\Data\Model\Step;
 
 /**
  * Data API for flower
@@ -21,6 +22,17 @@ class FlowerApi
 	public function getFlowers()
 	{
 		return Flow::all();
+	}
+
+	/**
+	 * Return All Flower Available
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function getSteps()
+	{
+		return Step::all();
 	}
 
 

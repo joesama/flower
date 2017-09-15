@@ -10,5 +10,16 @@ use Orchestra\Support\Facades\Foundation;
 		$router->post('/new/{id?}', 'RegisteredFlowRouting@saveFlowData');
 		// $router->post('/password', 'Auth\Password@update');
 
+
+		$router->get('/steps/{code}/{id}/{parent?}', 'RegisteredStepsRouting@newStep')
+			->where(['id' => '[0-9]+'])
+			->where(['parent' => '[0-9]+']);
+		$router->get('/steps/{code}/form/{parent?}', 'RegisteredStepsRouting@newStep')
+			->where(['parent' => '[0-9]+']);
+		$router->post('/steps/{code}/{id}/{parent?}', 'RegisteredStepsRouting@saveStep')
+			->where(['parent' => '[0-9]+']);
+		$router->get('/steps/{code}', 'RegisteredStepsRouting@registeredStep');
+
+
  });
 

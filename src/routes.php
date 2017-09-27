@@ -16,6 +16,8 @@ use Orchestra\Support\Facades\Foundation;
 			->where(['parent' => '[0-9]+']);
 		$router->get('/steps/{code}/form/{parent?}', 'RegisteredStepsRouting@newStep')
 			->where(['parent' => '[0-9]+']);
+		$router->get('/steps/{code}/delete/{id}', 'RegisteredStepsRouting@deleteStep')
+			->where(['parent' => '[0-9]+']);
 		$router->post('/steps/{code}/{id}/{parent?}', 'RegisteredStepsRouting@saveStep')
 			->where(['parent' => '[0-9]+']);
 		$router->get('/steps/{code}', 'RegisteredStepsRouting@registeredStep');

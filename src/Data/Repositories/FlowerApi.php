@@ -36,6 +36,17 @@ class FlowerApi
 		return Step::whereNull('fk_jfs_step')->whereNotIn('id',$exclude)->get();
 	}
 
+	/**
+	 * Return Flower First Step
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function getFlowFirstStep($flow)
+	{
+		return Step::where('fk_jf_flow',$flow)->whereNull('fk_jfs_step')->first();
+	}
+
 
 	/**
 	 * Get All Steps For Specific Flow 

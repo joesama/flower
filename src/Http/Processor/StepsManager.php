@@ -29,22 +29,22 @@ class StepsManager
 	public function registeredStep()
 	{	
 
-		// return Step::where('fk_jf_flow',$this->flow->id)->get();
-
 		$steps = collect([]);
+
+		if(!is_null($this->flow)):
 
 		Step::whereNull('fk_jfs_step')
 			->where('fk_jf_flow',$this->flow->id)
 			->get()->each(function ($item, $key) use($steps){
 
-
 			$matrix['item'] = $item;
 			$matrix['child'] = $this->getChilds($item->id);
 
 			$steps->put($item->jfs_code,$matrix);
-			// $steps->put($item->jfs_code, $this->getChilds($item->id,$steps));
 
 		});
+
+		endif;
 
 		return $steps;
 	}
@@ -135,7 +135,7 @@ class StepsManager
         	$model->fk_jfs_step = $input->get('current');
         	endif;
         	$model->jfs_code = $input->get('code');
-        	$model->jfs_name = $input->get('next');
+        	$model->jfs_name = ucwords($input->get('next'));
         	$model->state = $input->get('state');
         	$model->save();
 
@@ -148,6 +148,64 @@ class StepsManager
         DB::commit();
         	
 	}
+
+	/**
+	 * Remove Steps
+	 *
+	 **/
+	public function stepDataRemove($id)
+	{
+		DB::beginTransaction();
+
+		$step = Step::find($id);
+
+        try{
+
+        	$this->stepChildRemove($step->id);
+			$step->delete();
+
+        }catch(Exception $e){
+
+            DB::rollback();
+            dd($e->getMessage());
+        }
+
+        DB::commit();
+        	
+	}
+
+	/**
+	 * Remove Child Related
+	 *
+	 **/
+	public function stepChildRemove($id)
+	{
+		DB::beginTransaction();
+
+        try{
+
+		$steps = Step::where('fk_jfs_step',$id)->get();
+
+		$steps->each(function ($item, $key) {
+				
+			$this->stepChildRemove($item->id);
+			$item->delete();
+		
+		});
+
+
+        }catch(Exception $e){
+
+            DB::rollback();
+            dd($e->getMessage());
+        }
+
+        DB::commit();
+        	
+	}
+
+
+
 
 } // END class StepsManager 
 

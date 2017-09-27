@@ -73,5 +73,22 @@ class RegisteredStepsRouting
 
 	}
 
+	/**
+	 * New Flow
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function deleteStep($code,$id,Request $request)
+	{
+		$this->manager->stepDataRemove($id);
+
+        return redirect_with_message(
+                handles('joesama/flower::admin/flower/' . $request->segment(3) .'/'. $request->segment(4) ),
+                trans('threef/entree::respond.data.success', [ 'form' => trans('joesama/flower::menu.list') ]),
+                'success');
+
+	}
+
 
 } // END class RegisteredFlowRouting 

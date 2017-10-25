@@ -75,5 +75,16 @@ class FlowerApi
 		return Step::find($id);
 	}
 
+	/**
+	 * undocumented function
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function getNextStepId($id)
+	{
+		return Step::where('fk_jfs_step',$id)->pluck('id');
+	}
+
 } // END class FlowerApi 
 	

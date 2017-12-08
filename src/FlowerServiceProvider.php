@@ -101,10 +101,15 @@ class FlowerServiceProvider extends ModuleServiceProvider
         $actions = ['Manage Flower'];
 
         $admin   = $config->get('orchestra/foundation::roles.admin', 1);
-        $roles   = $this->app->make('orchestra.role')->newQuery()->pluck('name', 'id');
 
-        $acl->actions()->attach($actions);
-        $acl->allow($roles[$admin], $actions);
+        $roles   = collect($this->app->make('orchestra.role'))->pluck('name', 'id');
+
+        if($roles->isNotEmpty()):
+
+            $acl->actions()->attach($actions);
+            $acl->allow($roles[$admin], $actions);
+
+        endif;
 
         $handlers = [
             FlowerMenuHandler::class

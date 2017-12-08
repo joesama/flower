@@ -72,7 +72,7 @@ class FlowerApi
 	 **/
 	public function getStepInfo($id)
 	{
-		return Step::find($id);
+		return Step::with('flow')->find($id);
 	}
 
 	/**

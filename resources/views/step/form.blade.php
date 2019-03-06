@@ -4,7 +4,6 @@
 <div class="row">
 	<div class="col-md-12">
     {!! Form::open(array('url' => url()->current(), 'method' => 'POST', 'class' => 'form-horizontal form-validation')) !!}
-    
       <div class="form-group">
         <label for="fullname" class="col-sm-2 control-label">
           {{ trans('joesama/flower::content.step.current') }}
@@ -50,7 +49,7 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10 text-right">
           <button type="submit" class="btn btn-primary">
-          {{  trans('threef/entree::entree.button.save')  }}
+          {{  trans('joesama/entree::entree.button.save')  }}
           </button>
         </div>
       </div>

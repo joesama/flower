@@ -88,7 +88,6 @@ class FlowerServiceProvider extends ModuleServiceProvider
 
     }
 
-
     /**
      * Register packages menu
      *
@@ -102,7 +101,7 @@ class FlowerServiceProvider extends ModuleServiceProvider
 
         $admin   = $config->get('orchestra/foundation::roles.admin', 1);
 
-        $roles   = collect($this->app->make('orchestra.role'))->pluck('name', 'id');
+        $roles   = collect($this->app->make('orchestra.role')->get())->pluck('name', 'id');
 
         if($roles->isNotEmpty()):
 

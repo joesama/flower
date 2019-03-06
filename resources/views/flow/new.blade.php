@@ -34,7 +34,7 @@
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10 text-right">
           <button type="submit" class="btn btn-primary">
-          {{  trans('threef/entree::entree.button.save')  }}
+          {{  trans('joesama/entree::entree.button.save')  }}
           </button>
         </div>
       </div>

@@ -15,8 +15,10 @@
 			<table class='table table-hover table-condensed' >
 				<thead>
 					<tr>
-						<th>{!! strtoupper(trans('joesama/flower::content.flow.name')) !!}</th>
-						<!-- <th>{!! strtoupper(trans('joesama/flower::content.flow.desc')) !!}</th> -->
+						<th>
+							<strong>{!! strtoupper(trans('joesama/flower::content.flow.name')) !!}</strong>
+							<small>{!! ucwords(trans('joesama/flower::content.flow.desc')) !!}</small>
+						</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -11,15 +11,16 @@
             "homepage": "https://bitbucket.org/joesama"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "http://coders.3fresources.com/threef/entree.git"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Joesama\\Flower\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Joesama\\Flower\\FlowerServiceProvider"
+            ]
         }
     },
     "require": {

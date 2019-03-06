@@ -30,7 +30,7 @@ class RegisteredStepsRouting
 	{
 		$flow = $this->manager->flowInfo();
 
-		set_meta('title', trans('joesama/flower::menu.list') .'&nbsp;:&nbsp;'. $flow->jff_name .'&nbsp;(' . $flow->jff_code . ')');
+		set_meta('title', trans('joesama/flower::menu.list') .' : '. $flow->jff_name .' (' . $flow->jff_code . ')');
 
 		$steps = $this->manager->registeredStep($request);
 
